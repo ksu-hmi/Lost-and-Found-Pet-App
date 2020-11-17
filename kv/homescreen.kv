@@ -1,6 +1,55 @@
+#:import utils kivy.utils
 <HomeScreen>:
-    Button:
-        text: 
-            "You are at the home screen"
-        on_release:
-            app.change_screen("settings_screen")
+    FloatLayout:
+        canvas:
+            Color: 
+                rgb: utils.get_color_from_hex("#FA8072")
+            Rectangle:
+                size: self.size 
+                pos: self.pos 
+        GridLayout:
+            canvas:
+                Color: 
+                    rgb: utils.get_color_from_hex("#FA8072")
+                Rectangle:
+                    size: self.size 
+                    pos: self.pos 
+            rows: 1
+            pos_hint: {"top": 1, "left": 1}
+            size_hint: 1, .1
+            Image: 
+                source: "icons/cat2.png"
+            Image: 
+                source: "icons/rab1.png"
+        GridLayout:
+            # put 2 weather icons and avatar icon
+            rows: 1
+            pos_hint: {"top": .9, "left": 1}
+            size_hint: 1, .2
+            Image: 
+                source: "icons/tw1.png"
+        Label:
+            # streak label 
+            pos_hint: {"top": .7, "left": 1}
+            size_hint: 1, .1
+            text: "Activity"
+            id: streak_label
+        GridLayout:
+            # banner grid here 
+            cols: 1
+            pos_hint: {"top": .6, "left": 1}
+            size_hint: 1, .4
+        GridLayout:
+            rows:1
+            pos_hint: {"top": .2, "left": 1}
+            size_hint: 1, .2
+            # add 3 menue buttons here
+            ImageButton:
+                source: "icons/home.png"
+                on_release:
+                    print("Release go back to home page")
+            ImageButton:
+                source: "icons/search.png"
+                on_release:
+                    print("Release go to map page") 
+
