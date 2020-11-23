@@ -36,6 +36,7 @@
             id: streak_label
         GridLayout:
             # banner grid here 
+            id: banner_grid
             cols: 1
             pos_hint: {"top": .6, "left": 1}
             size_hint: 1, .4
@@ -45,11 +46,14 @@
             size_hint: 1, .2
             # add 3 menue buttons here
             ImageButton:
-                source: "icons/home.png"
+                source: "icons/dog.png"
                 on_release:
                     print("Release go back to home page")
             ImageButton:
-                source: "icons/search.png"
+                source: "icons/loc.png"
+                on_press:
+                    self.source = "icons/search.png"
                 on_release:
+                    self.source = "icons/loc.png"
                     print("Release go to map page") 
 
