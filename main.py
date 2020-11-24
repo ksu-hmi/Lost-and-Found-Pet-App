@@ -25,15 +25,25 @@ class MainApp(App):
 
     def on_start(self):
         # get database data
-        result = requests.get("https://lost-and-found-pet-app.firebaseio.com/" + str(self.my_friend_id) + ".json")
-        data = json.loads(result.content.decode())
-        workouts = data['workouts'][1:]
-        for workout in workouts:
+        #result = requests.get("https://lost-and-found-pet-app.firebaseio.com/" + str(self.my_friend_id) + ".json")
+        #data = json.loads(result.content.decode())
+        data = {
+            'animal_name': 'Snoopy',
+            'animal_type': 'rabbit'
+            }
+        response = requests.post("https://lost-and-found-pet-app.firebaseio.com/missing_pets.json", json.dumps(data))
+        data = {
+            'animal_name': 'Twinkie',
+            'animal_type': 'dog'
+            }
+        response = requests.post("https://lost-and-found-pet-app.firebaseio.com/missing_pets.json", json.dumps(data))
+        print(response.ok)
+        print(response.json())
+        #workouts = data['workouts'][1:]
+        #for workout in workouts:
             # populate workout grid in homescreen
-            print(workout['workout_image'])
-            print(workout['units'])
-
-    
+            #print(workout['workout_image'])
+            #print(workout['units'])
 
     def change_screen(self, screen_name):
         #get the screen manager from the kv file
